@@ -17,7 +17,7 @@
         </div>
       </div>
     </header>
-    <div class="content" v-if="activeTab === 'home'">
+    <div class="content">
       <aside class="side">
         <div
           v-for="c in categories"
@@ -40,16 +40,6 @@
         </div>
       </main>
     </div>
-    <div v-else class="tab-content">
-      <div class="placeholder">{{ tabTitles[activeTab] }} 页面</div>
-    </div>
-    <nav class="tabbar">
-      <div class="tab-item" :class="{active: activeTab==='home'}" @click="setTab('home')">首页</div>
-      <div class="tab-item" :class="{active: activeTab==='earn'}" @click="setTab('earn')">赚钱</div>
-      <div class="tab-item" :class="{active: activeTab==='activity'}" @click="setTab('activity')">活动</div>
-      <div class="tab-item" :class="{active: activeTab==='deposit'}" @click="setTab('deposit')">存款</div>
-      <div class="tab-item" :class="{active: activeTab==='mine'}" @click="setTab('mine')">我的</div>
-    </nav>
   </div>
 </template>
 
@@ -58,7 +48,6 @@ export default {
   name: 'HomePage',
   data() {
     return {
-      activeTab: 'home',
       categories: [
         { key: 'hot', label: '热门' },
         { key: 'slot', label: '电子' },
@@ -86,7 +75,12 @@ export default {
         ][i % 6]
       }));
     this.itemsByCategory = {
-      hot: makeItems(['炸金花','抢庄牛牛','PG电子','麻将胡了','五龙捕鱼','JDB捕鱼','德州扑克','极速赛车','GO彩票']),
+      hot: makeItems([
+        '炸金花','抢庄牛牛','PG电子','麻将胡了','五龙捕鱼','JDB捕鱼','德州扑克','极速赛车','GO彩票',
+        '老虎机','水果派对','幸运转盘','骰宝','轮盘','百家乐','龙虎','牛牛对战','斗鸡','闯关冒险',
+        '海盗宝藏','西部牛仔','丛林秘宝','魔法奇境','太空漫游','冰雪奇缘','神秘埃及','水下世界',
+        '狂野之夜','金矿矿工','啤酒节','赛马','赛车漂移','棒球之星','篮球狂热','足球荣耀','排球风暴'
+      ]),
       slot: makeItems(['PG电子','经典游戏','爆分热门','彩金大奖','水果派对','财富转轮','西部牛仔','丛林秘宝','极速转轴']),
       live: makeItems(['真人视讯','百家乐','龙虎','轮盘','21点','骰宝','德州扑克','番摊','大厅推荐']),
       fish: makeItems(['财神捕鱼','五龙捕鱼','JDB捕鱼','海底世界','雷霆战机','巨鲨来袭','章鱼宝藏','深海奇兵','欢乐渔场']),
@@ -97,17 +91,11 @@ export default {
   computed: {
     currentItems() {
       return this.itemsByCategory[this.activeCategory] || []
-    },
-    tabTitles() {
-      return { home: '首页', earn: '赚钱', activity: '活动', deposit: '存款', mine: '我的' }
     }
   },
   methods: {
     setCategory(key) {
       this.activeCategory = key
-    },
-    setTab(key) {
-      this.activeTab = key
     }
   }
 }
@@ -119,11 +107,19 @@ export default {
   flex-direction: column;
   min-height: 100vh;
   background: #f6f7fb;
+  padding-top: 96px; /* 为固定顶部栏预留空间 */
 }
 .topbar{
   padding: 10px 12px;
   background: #ffffff;
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 414px;
+  z-index: 1000;
 }
 .toprow{
   display: flex;
@@ -222,32 +218,5 @@ export default {
   font-size: 12px;
   line-height: 28px;
   background: rgba(0,0,0,0.25);
-}
-.tabbar{
-  margin-top: auto;
-  height: 56px;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  box-shadow: 0 -2px 8px rgba(0,0,0,0.06);
-}
-.tab-item{
-  font-size: 12px;
-  color: #666;
-  cursor: pointer;
-}
-.tab-item.active{
-  color: #2b6df5;
-}
-.tab-content{
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.placeholder{
-  color: #8a8f99;
-  font-size: 14px;
 }
 </style>
