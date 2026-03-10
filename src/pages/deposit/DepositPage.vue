@@ -19,11 +19,11 @@ export default {
 </script>
 
 <style scoped>
-.page{min-height:100vh;background:#f6f7fb;padding-top:60px}
+.page{background:#f6f7fb}
 .topbar{padding:10px 12px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.06);position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:414px;z-index:1000}
 .toprow{display:flex;align-items:center;justify-content:space-between;font-size:14px}
 .logo{font-weight:700;color:#2b6df5}
 .download{font-size:12px;color:#2b6df5}
-.content{display:flex;align-items:center;justify-content:center;height:70vh}
+.content{display:flex;align-items:center;justify-content:center;margin-top:60px;height:calc(100vh - 60px - 56px);overflow-y:auto}
 .placeholder{color:#8a8f99}
 </style>

@@ -52,10 +52,9 @@ export default { name: 'App' }
   color: #2c3e50;
   max-width: 414px;
   margin: 0 auto;         /* 居中显示 */
-  min-height: 100vh;      /* 撑满屏幕高度 */
-  overflow-x: hidden;     /* 隐藏横向溢出 */
+  height: 100vh;
+  overflow: hidden;
   box-shadow: 0 0 10px rgba(0,0,0,0.1); /* 可选：增加阴影效果 */
-  padding-bottom: 56px;   /* 给固定底部导航留出空间 */
 }
 
 * {
