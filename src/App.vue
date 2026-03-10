@@ -1,15 +1,14 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Home></Home>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Home from "@/components/home/home";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Home
   }
 }
 </script>
@@ -21,6 +20,15 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  max-width: 414px;
+  margin: 0 auto;         /* 居中显示 */
+  min-height: 100vh;      /* 撑满屏幕高度 */
+  overflow-x: hidden;     /* 隐藏横向溢出 */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* 可选：增加阴影效果 */
+}
+
+* {
+  padding: 0;
+  margin: 0
 }
 </style>
